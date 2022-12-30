@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | Kuchnioteka</title>
+    <meta name="description"
+        content="Kuchnia, która skradnie Twoje serce? W naszym studiu kuchennym w Opolu, pomożemy zrealizować Ci Twoje marzenie. Odwiedź nasz salon i sprawdź sam!">
+    <meta name="keywords"
+        content="kuchnia, studio kuchenne, stolarz, projektowanie kuchni, Opole, salon meblowy, meble, kontakt">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Teko:wght@300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../dist/css/style.min.css">
+</head>
+
+<body>
+    <!-- @include nav.kit -->
+
+    <main>
+        <section class="contact container" id="contact">
+            <h2 class="section-title">Kontakt</h2>
+
+
+            <form action="" class="contact__form">
+                <div class="contact__form-box firstname">
+                    <label for="first-name">Imię:</label>
+                    <input type="text" id="firstname" placeholder="Imię" id="firstname">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="contact__form-box lastname">
+                    <label for="last-name">Nazwisko:</label>
+                    <input type="text" id="lastname" placeholder="Nazwisko" id="lastname">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="contact__form-box phone">
+                    <label for="phone">Telefon:</label>
+                    <input type="tel" id="phone" placeholder="Telefon" id="phone">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="contact__form-box email">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" placeholder="E-mail" id="mail">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="contact__form-box msg">
+                    <label for="msg">Wiadomość:</label>
+                    <textarea id="msg" cols="30" rows="15" placeholder="Wiadomość..." id="msg"></textarea>
+                    <p class="error-text">error</p>
+                </div>
+
+                <button class="contact__form-send">Wyślij</button>
+
+                <div class="contact__form-popup">
+                    <p>Wiadomość została poprawnie wysłana!</p>
+                    <button class="contact__form-close">Zamknij</button>
+
+            </form>
+            </div>
+        </section>
+
+        <section class="address" id="address">
+            <div class="address__shadow"></div>
+            <div class="section-title">Nasz Adres</div>
+            <div class="container">
+                <div class="address__box">
+                    <div class="address__box-address"> <span>Studnio Kuchenne Kuchnioteka:</span>
+                        <p>ul. Wymyślona 1</p>
+                        <p>45-000 Opole</p>
+                    </div>
+                    <div class="address__box-phone"><span>Telefon:</span>
+                        <p><img src="../dist/img/ico/phone.svg" alt="Telefon">+48 000 000 000</p>
+                    </div>
+                    <div class="address__box-mail"><span>Email:</span>
+                        <p><img src="../dist/img/ico/mail dark.svg" alt="mail"> kuchnioteka@8mail.com</p>
+                    </div>
+                </div>
+                <div class="map"><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.749560440267!2d17.92031055092124!3d50.66891027940546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47105303ff47e375%3A0xeab3ba9b4d2a1d2!2sRynek%2C%2046-020%20Opole!5e0!3m2!1spl!2spl!4v1671797663553!5m2!1spl!2spl"
+                        width="300" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" class="map"></iframe></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- @include footer.kit -->
+
+    <script src="../dist/js/contact.min.js"></script>
+</body>

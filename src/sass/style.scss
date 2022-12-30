@@ -1,0 +1,1135 @@
+@use './utilities/colors' as color;
+@use './utilities/animations';
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	scroll-padding-top: 70px;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: color.$main-color;
+	color: color.$main-font-color;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.section-title {
+	display: block;
+	width: 87%;
+	margin: 0 0.3em 0.5em;
+	padding: 0.1em 0;
+	text-align: center;
+	font-family: 'Teko';
+	font-size: 6rem;
+	letter-spacing: 4px;
+	background-color: color.$thrid-color;
+	color: color.$main-font-color;
+}
+
+@mixin heroImg {
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+
+@mixin shadow {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.nav {
+	position: fixed;
+	top: 0;
+	height: 60px;
+	width: 100%;
+	font-family: 'Teko', sans-serif;
+	letter-spacing: 1px;
+	background-color: color.$thrid-color;
+	z-index: 20;
+
+	.hamburger {
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		height: 50px;
+		width: 50px;
+		background: none;
+		border: none;
+		padding: 5px 10px;
+		cursor: pointer;
+		z-index: 300000;
+	}
+
+	&__bar {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		max-width: 1200px;
+		z-index: 300;
+	}
+
+	&__logo {
+		position: absolute;
+		top: 3px;
+		left: 5px;
+		margin: 5px;
+		width: 40px;
+		height: 40px;
+		padding: 5px;
+		border: 1px solid white;
+		z-index: 300;
+	}
+
+	.show {
+		right: 0;
+	}
+
+	.hide {
+		display: none;
+	}
+
+	&__list {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		top: 0;
+		right: -350px;
+		padding-top: 25vh;
+		height: 100vh;
+		width: 250px;
+		background-color: color.$second-color;
+		transition: right 0.5s;
+		list-style: none;
+	}
+
+about	&__item {
+		margin: 20px auto;
+	}
+
+	&__item a {
+		padding: 5px;
+		font-weight: 700;
+		font-size: 3rem;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		color: black;
+		text-decoration: none;
+	}
+}
+
+.header {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	text-shadow: 0px 4px 10px rgb(70, 59, 59);
+
+	&__img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		@include heroImg();
+		background-image: url('../../dist/img/hero-bg-kitchen-hearth-sm-crop.jpg');
+		z-index: 0;
+	}
+
+	&__shadow {
+		@include shadow();
+		background-color: rgba($color: #4e4036, $alpha: 0.4);
+	}
+
+	&__heading {
+		display: inline-block;
+		font-family: 'Teko', sans-serif;
+		font-size: 7.2rem;
+		letter-spacing: 3px;
+		color: white;
+		z-index: 2;
+	}
+
+	&__text {
+		text-align: center;
+		font-weight: 300;
+		font-size: 2.2rem;
+		text-transform: uppercase;
+		z-index: 2;
+		margin-top: -0.5em;
+	}
+
+	&__arrow-btn {
+		position: absolute;
+		bottom: 5%;
+		width: 70px;
+		height: 70px;
+		border-radius: 50%;
+		background: rgba($color: black, $alpha: 0.2);
+		border: 2px solid color.$main-font-color;
+		z-index: 10;
+		cursor: pointer;
+
+		&-ico {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 50%;
+			transform: translate(50%, 50%);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			border-radius: 50%;
+			width: 70px;
+			height: 70px;
+			border: 2px solid color.$main-font-color;
+			animation: 2s linear infinite scaleUp;
+		}
+	}
+}
+
+.projects {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	margin: 5em 0.5em;
+
+	&__boxes {
+		display: flex;
+		position: relative;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		left: 0;
+		right: 0;
+		width: 100%;
+		background-color: #e6e2e2;
+	}
+
+	&__box {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		width: 28em;
+		height: 58em;
+		margin: 1em 1em;
+		color: rgb(56, 56, 56);
+		background-color: rgb(240, 240, 240);
+		box-shadow: 0px 1px 3px rgb(150, 149, 149);
+		transition: transform 0.5s;
+
+		&:hover {
+			transform: scale(0.95);
+		}
+
+		&-item {
+			&-title {
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				top: 0em;
+				width: 80%;
+				height: 15%;
+				text-transform: uppercase;
+				font-size: 2.1rem;
+				font-weight: bold;
+				color: rgb(58, 55, 55);
+			}
+
+			&-text {
+				position: absolute;
+				bottom: 1em;
+				left: 1em;
+				right: 1em;
+				top: 21em;
+				font-size: 1.6rem;
+			}
+
+			&-button {
+				position: absolute;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				left: 50%;
+				bottom: 5%;
+				width: 70%;
+				height: 3em;
+				padding: 1em 2.5em;
+				font-weight: bold;
+				font-size: 1.5rem;
+				letter-spacing: 2px;
+				color: black;
+				cursor: pointer;
+				transform: translateX(-50%);
+				transition: background-color 0.3s, color 0.3s;
+			}
+
+			&-button:hover {
+				background-color: rgb(58, 55, 55);
+				color: color.$main-font-color;
+			}
+		}
+
+		img {
+			position: absolute;
+			top: 16%;
+			left: 0;
+			width: 100%;
+			height: 38%;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+}
+
+.products {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	overflow: hidden;
+
+	&__slider {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 87%;
+		height: 400px;
+		margin: 3em 10em 1em;
+		box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.4);
+		overflow: hidden;
+
+		&-box {
+			display: flex;
+			opacity: 0;
+			top: 0;
+			bottom: 0;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			transition: opacity 0.8s;
+		}
+
+		&-img {
+			top: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+
+		}
+
+		.one {
+			display: block;
+		}
+
+		.two {
+			display: none;
+		}
+
+		&-title {
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: color.$main-font-color;
+			bottom: 0;
+			left: 0;
+			width: 50%;
+			height: 20%;
+			font-size: 3rem;
+			text-shadow: 0px 1px 5px black;
+			background-color: rgba($color: black, $alpha: 0.5);
+			border-top-right-radius: 5px;
+			font-weight: bold;
+		}
+
+		.active-box {
+			opacity: 1;
+		}
+	}
+
+	&__btn {
+		position: absolute;
+		top: 50%;
+		padding: 0.4em 0.25em;
+		font-size: 5rem;
+		background-color: rgba($color: #000000, $alpha: 0.5);
+		color: color.$main-font-color;
+		text-shadow: 0px 1px 5px black;
+		border: none;
+		cursor: pointer;
+		transform: translateY(-50%);
+		z-index: 2;
+
+		&--left {
+			left: 0;
+		}
+
+		&--right {
+			right: 0;
+		}
+	}
+}
+
+.about-us {
+	display: flex;
+	position: relative;
+	height: 1250px;
+	width: 100vw;
+	margin-top: 8em;
+	@include heroImg();
+	background-image: url('../../dist/img/kawa-sm.jpg');
+	z-index: 0;
+	overflow: hidden;
+
+	&__shadow {
+		@include shadow();
+		background-color: rgba($color: #1b1304, $alpha: 0.4);
+	}
+
+	.section-title {
+		position: absolute;
+		left: -0.3em;
+		height: 1.5em;
+		width: 3em;
+		z-index: 2;
+	}
+
+	&__box {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		height: 1250px;
+		margin: 30px 1em;
+		padding-top: 5em;
+		padding-bottom: 5em;
+		z-index: 2;
+	}
+
+	&__card {
+		position: relative;
+		width: 30em;
+		height: 500px;
+		margin: 2em 0.1em;
+		background-color: #c9c9c9;
+		box-shadow: 0px 0px 10px rgba(24, 23, 23, 0.329);
+		transition: transform 0.3s;
+		overflow: hidden;
+		z-index: 0;
+
+		&:hover {
+			transform: scale(0.95);
+		}
+
+		&-foto {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			width: 68%;
+			height: 255px;
+			object-fit: cover;
+			object-position: left;
+		}
+
+		&-title {
+			display: block;
+			position: absolute;
+			top: 100px;
+			left: -100px;
+			width: 270px;
+			height: 70px;
+			padding: 0.2em 0.2em;
+			text-align: center;
+			font-size: 4rem;
+			font-family: 'Teko', sans-serif;
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			font-weight: bold;
+			color: color.$main-font-color;
+			background-color: #2c2c2c;
+			transform: rotate(-90deg);
+			z-index: 2;
+		}
+
+		&-info {
+			position: absolute;
+			right: 15px;
+			bottom: 15px;
+			top: 280px;
+			left: 15px;
+			background-color: #5a5959;
+			z-index: 3;
+
+			&-name {
+				margin-top: 5px;
+				text-transform: uppercase;
+				text-align: center;
+				font-size: 2.2rem;
+			}
+
+			&-text {
+				position: absolute;
+				top: 20%;
+				padding: 0.4em 1em;
+				font-size: 1.2rem;
+			}
+
+			&-ico {
+				position: absolute;
+				height: 1.2em;
+				width: 30px;
+				left: -2em;
+				bottom: 0.05em;
+			}
+
+			&-mail {
+				position: absolute;
+				display: block;
+				left: 4em;
+				bottom: 0.8em;
+				height: 1.2em;
+				width: 2em;
+				text-decoration: none;
+				color: #fff;
+				font-size: 1.4rem;
+			}
+
+			&-mail:focus {
+				outline: none;
+				color: #ce3838;
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+.contact {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: 10em;
+	overflow: hidden;
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: #000000;
+
+		input:focus,
+		textarea:focus {
+			outline: 1px solid #5f5f5f;
+		}
+
+		label {
+			text-align: center;
+			background-color: #000000d0;
+			margin: 0.7em 0;
+			color: color.$main-font-color;
+			font-size: 3rem;
+			font-family: 'Teko', sans-serif;
+			letter-spacing: 1.5px;
+		}
+
+		input {
+			height: 3em;
+			padding: 1.8em 1em;
+			font-family: 'Montserrat', sans-serif;
+		}
+
+		textarea {
+			resize: none;
+			overflow-y: scroll;
+			padding: 1.8em 1em;
+			font-family: 'Montserrat', sans-serif;
+			width: 100%;
+			height: 20em;
+		}
+
+		&-box {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			width: 80vw;
+
+			.error-text {
+				display: block;
+				width: 100%;
+				height: 2em;
+				margin-top: 0.1em;
+				text-align: center;
+				font-size: 1.4rem;
+				font-weight: bold;
+				visibility: hidden;
+			}
+
+			&.error .error-text {
+				visibility: visible;
+			}
+		}
+
+		&-send,
+		&-close {
+			display: block;
+			width: 5em;
+			padding: 0.1em 1em;
+			font-size: 3.2rem;
+			letter-spacing: 1px;
+			font-family: 'Teko', sans-serif;
+			color: color.$main-font-color;
+			background-color: rgba(0, 0, 0, 0.8156862745);
+			transition: color 0.3s, background-color 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				background-color: color.$main-font-color;
+				color: rgba(0, 0, 0, 0.8156862745);
+				border: 1px solid rgba(0, 0, 0, 0.8156862745);
+			}
+		}
+
+		&-send {
+			margin-top: 0.5em;
+		}
+
+		&-close {
+			margin-top: 1.5em;
+			font-size: 2.5rem;
+		}
+
+		&-popup {
+			position: fixed;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			width: 90vw;
+			max-width: 800px;
+			height: 200px;
+			top: 50vh;
+			left: 50%;
+			padding: 0 3em;
+			transform: translate(-50%, -50%);
+			background-color: #fff;
+			border: 1px solid rgba(0, 0, 0, 0.8156862745);
+			transition: top 0.5s;
+			visibility: hidden;
+
+			p {
+				margin-top: 1em;
+				font-size: 2.2rem;
+			}
+		}
+
+		.show-popup {
+			visibility: visible;
+		}
+	}
+}
+
+.address {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	height: 130em;
+	margin-top: 5em;
+	background-image: url(../../dist/img/wood-sm.jpg);
+	@include heroImg();
+	background-position: right;
+	z-index: 0;
+	overflow: hidden;
+
+	&__shadow {
+		@include shadow();
+		background-color: rgba($color: #000000, $alpha: 0.3);
+	}
+
+	.section-title {
+		margin: 1em auto;
+		max-width: 1000px;
+		background-color: #f0f0f0da;
+		color: color.$thrid-color;
+		border: 1px solid color.$thrid-color;
+		z-index: 1;
+	}
+
+	.container {
+		z-index: 1;
+	}
+
+	.map {
+		margin: 0;
+		height: 495px;
+		border: 1px solid color.$thrid-color;
+		iframe {
+			width: 100%;
+		}
+	}
+
+	&__box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		width: 16em;
+		height: 23em;
+		margin-bottom: 3.5em;
+		background-color: #f0f0f0da;
+		color: color.$thrid-color;
+		border: 1px solid color.$thrid-color;
+		font-size: 1.9rem;
+
+		span {
+			display: block;
+			margin-bottom: 0.5em;
+			font-size: 2.1rem;
+			font-weight: bold;
+		}
+
+		&-address,
+		&-phone,
+		&-mail {
+			width: 12em;
+			margin-top: 0.05em;
+			margin-bottom: 2em;
+			margin-left: -1.5em;
+		}
+
+		&-phone p img {
+			width: 25px;
+			margin-bottom: -0.3em;
+			margin-right: 0.2em;
+		}
+
+		&-mail {
+			margin-bottom: 0;
+			text-decoration: none;
+			color: color.$thrid-color;
+		}
+
+		&-mail p {
+			display: flex;
+		}
+
+		&-mail p img {
+			margin-top: 0.1em;
+			margin-right: 0.4em;
+			width: 30px;
+			height: 18px;
+		}
+	}
+}
+
+.footer {
+	display: flex;
+	flex-direction: column;
+	width: 100vw;
+	height: 20em;
+	background-color: color.$thrid-color;
+	overflow: hidden;
+
+	.container {
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		max-width: 800px;
+	}
+
+	&__top {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-evenly;
+		height: 16em;
+		width: 50vw;
+		min-width: 320px;
+	}
+
+	&__box {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		margin-top: 3em;
+
+		&-title {
+			font-family: 'Teko', sans-serif;
+			font-size: 2.5rem;
+			letter-spacing: 1px;
+		}
+
+		a {
+			margin-bottom: 0.2em;
+			text-decoration: none;
+			color: color.$main-font-color;
+			font-size: 1.4rem;
+			letter-spacing: 0.5px;
+		}
+	}
+
+	&__logo {
+		width: 70px;
+		height: 70px;
+		align-self: center;
+		opacity: 0.6;
+	}
+
+	&__bottom {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-top: 1px solid color.$main-color;
+		height: 4em;
+	}
+}
+
+@media (min-width: 375px) {
+	.header {
+		&__heading {
+			font-size: 8rem;
+		}
+
+		&__text {
+			font-size: 2.2rem;
+		}
+	}
+
+	.products {
+		&__slider {
+			height: 60em;
+
+			&-title {
+				font-size: 3.5rem;
+			}
+		}
+	}
+
+	.about-us {
+		display: flex;
+		justify-content: center;
+
+		.section-title {
+			width: 3em;
+			height: 1.4em;
+		}
+
+		&__card {
+			height: 550px;
+			width: 360px;
+
+			&-foto {
+				width: 30em;
+			}
+
+			&-info {
+				&-name {
+					font-size: 2.5rem;
+				}
+
+				&-text {
+					top: 16%;
+					font-size: 1.5rem;
+				}
+
+				&-ico {
+					height: 20px;
+					width: 34px;
+				}
+
+				&-mail {
+					font-size: 1.8rem;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 568px) {
+	.contact {
+		&__form-box {
+			width: 7 0vw;
+		}
+	}
+
+	.address {
+		&__box {
+			width: 25em;
+		}
+	}
+
+	.products {
+		&__slider {
+			.one {
+				display: none;
+			}
+
+			.two {
+				display: block;
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.section-title {
+		font-size: 8rem;
+	}
+
+	.nav {
+		.hamburger {
+			display: none;
+		}
+
+		&__list {
+			position: absolute;
+			display: flex;
+			flex-direction: row;
+			justify-content: flex-end;
+			top: -10px;
+			right: 0;
+			height: 0;
+			padding: 0;
+			width: 100%;
+			background: none;
+			list-style: none;
+		}
+
+		&__item {
+			display: flex;
+			justify-content: space-between;
+			margin: 20px 10px;
+		}
+
+		&__item a {
+			padding: 5px;
+			font-weight: 700;
+			text-transform: uppercase;
+			color: color.$main-font-color;
+			text-decoration: none;
+			font-size: 2.5rem;
+		}
+	}
+
+	.header {
+
+		&__img {
+			background-image: url('../../dist/img/hero-bg-kitchen-hearth-md.jpg');
+		}
+
+		&__heading {
+			font-size: 15rem;
+		}
+
+		&__text {
+			font-size: 3rem;
+		}
+	}
+
+	.projects {
+		margin: 5em auto;
+	}
+
+	.products {
+		&__slider {
+			height: 65em;
+
+			&-title {
+				font-size: 4.5rem;
+			}
+		}
+	}
+
+	.about-us {
+		display: flex;
+		justify-content: center;
+		height: 800px;
+		background-image: url('../../dist/img/kawa-md.jpg');
+
+		.section-title {
+			width: 3em;
+			height: 1.4em;
+		}
+
+		&__box {
+			flex-direction: row;
+			height: 800px;
+		}
+
+		&__card {
+			height: 550px;
+			width: 360px;
+
+			&-foto {
+				width: 30em;
+			}
+
+			&-info {
+				&-name {
+					font-size: 2.5rem;
+				}
+
+				&-text {
+					top: 16%;
+					font-size: 1.5rem;
+				}
+
+				&-ico {
+					height: 20px;
+					width: 34px;
+				}
+
+				&-mail {
+					font-size: 1.8rem;
+				}
+			}
+		}
+	}
+
+	.contact {
+		&__form {
+			display: grid;
+			grid-template-rows: repeat(4, 12.5em);
+			grid-template-columns: minmax(28em, 50em) minmax(3em, 10em) minmax(30em, 50em);
+			margin: -2em 10em 0;
+
+			.firstname,
+			.lastname,
+			.phone,
+			.email,
+			.msg,
+			&-send {
+				justify-self: center;
+				align-self: start;
+			}
+			.msg {
+				grid-row: 1/4;
+				grid-column: 3/4;
+				justify-self: flex-start;
+				min-width: 100%;
+				max-width: 100%;
+				max-height: 100%;
+				height: 100%;
+				margin-top: -0.2em;
+			}
+
+			.firstname,
+			.lastname,
+			.phone,
+			.email {
+				grid-column: 1/2;
+			}
+
+			.firstname {
+				grid-row: 1/2;
+			}
+
+			.lastname {
+				grid-row: 2/3;
+			}
+
+			.phone {
+				grid-row: 3/4;
+			}
+
+			.email {
+				grid-row: 4/5;
+			}
+
+			label {
+				margin: 0.2em 0;
+				font-weight: bold;
+				text-transform: uppercase;
+				color: #000000d0;
+				background-color: color.$main-font-color;
+			}
+
+			&-send {
+				grid-column: 3/4;
+				grid-row: 4/5;
+				margin-top: 0.5em;
+				padding: 0.2em 0em;
+				width: 50%;
+			}
+
+			textarea,
+			input {
+				background-color: #f7f2f2ee;
+				border: 1px solid color.$thrid-color;
+				margin-bottom: 0.2em;
+			}
+
+			textarea {
+				padding: 2em 1em;
+				width: 100%;
+				height: 76%;
+			}
+
+			&-box {
+				width: 100%;
+			}
+		}
+	}
+
+	.address {
+		background-image: url(../../dist/img/wood-lg.jpg);
+		height: 85em;
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			margin-top: -8em;
+		}
+
+		&__box {
+			width: 65%;
+			margin-right: 2em;
+			margin-top: 3.9em;
+		}
+
+		.map {
+			height: 43em;
+			width: 45vw;
+		}
+	}
+}
