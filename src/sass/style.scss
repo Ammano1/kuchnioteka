@@ -152,7 +152,7 @@ about	&__item {
 		width: 100%;
 		height: 100%;
 		@include heroImg();
-		background-image: url('../../dist/img/hero-bg-kitchen-hearth-sm-crop.jpg');
+		background-image: url('../img/hero-bg-kitchen-hearth-sm-crop.jpg');
 		z-index: 0;
 	}
 
@@ -412,7 +412,7 @@ about	&__item {
 	width: 100vw;
 	margin-top: 8em;
 	@include heroImg();
-	background-image: url('../../dist/img/kawa-sm.jpg');
+	background-image: url('../img/kawa-sm.jpg');
 	z-index: 0;
 	overflow: hidden;
 
@@ -673,7 +673,7 @@ about	&__item {
 	justify-content: flex-start;
 	height: 130em;
 	margin-top: 5em;
-	background-image: url(../../dist/img/wood-sm.jpg);
+	background-image: url('../img/wood-sm.jpg');
 	@include heroImg();
 	background-position: right;
 	z-index: 0;
@@ -952,7 +952,7 @@ about	&__item {
 	.header {
 
 		&__img {
-			background-image: url('../../dist/img/hero-bg-kitchen-hearth-md.jpg');
+			background-image: url('../img/hero-bg-kitchen-hearth-md.jpg');
 		}
 
 		&__heading {
@@ -982,7 +982,7 @@ about	&__item {
 		display: flex;
 		justify-content: center;
 		height: 800px;
-		background-image: url('../../dist/img/kawa-md.jpg');
+		background-image: url('../img/kawa-md.jpg');
 
 		.section-title {
 			width: 3em;
@@ -1110,7 +1110,7 @@ about	&__item {
 	}
 
 	.address {
-		background-image: url(../../dist/img/wood-lg.jpg);
+		background-image: url('../img/wood-lg.jpg');
 		height: 85em;
 
 		.container {
