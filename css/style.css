@@ -833,6 +833,7 @@ about .nav__item {
     position: absolute;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     justify-content: flex-end;
     top: -10px;
     right: 0;
@@ -848,6 +849,7 @@ about .nav__item {
     margin: 20px 10px;
   }
   .nav__item a {
+    display: inline;
     padding: 5px;
     font-weight: 700;
     text-transform: uppercase;
